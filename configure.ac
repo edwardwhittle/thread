@@ -10,7 +10,9 @@ LT_INIT
 
 AC_PROG_CC
 
-PKG_CHECK_MODULES([MODBUS], [libmodbus])
+AC_SEARCH_LIBS([pthread_create], [pthread], [], 
+	AC_MSG_ERROR([*** POSIX threads support required])
+	)
 
 AC_CONFIG_FILES([
     Makefile
